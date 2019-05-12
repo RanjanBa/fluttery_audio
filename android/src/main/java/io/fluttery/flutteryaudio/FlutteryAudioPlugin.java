@@ -57,7 +57,9 @@ public class FlutteryAudioPlugin implements MethodCallHandler {
       @Override
       public void onBufferingUpdate(int percent) {
         Log.d(TAG, "Android -> Flutter: onBufferingUpdate()");
-        channel.invokeMethod("onBufferingUpdate", null);
+        Map<String, Object> args = new HashMap<>();
+        args.put("percent", percent);
+        channel.invokeMethod("onBufferingUpdate", args);
       }
 
       @Override
